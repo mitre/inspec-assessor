@@ -77,3 +77,6 @@ docs/.vuepress/dist/**
 # Serverless directories
 .serverless
 
+node_modules
+.temp
+.cache
