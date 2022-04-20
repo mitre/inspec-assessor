@@ -6,10 +6,20 @@
   "author": "Aaron Lippold <lippold@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "vuepress": "^2.0.0-beta.38"
+    "@vuepress/plugin-back-to-top": "^1.0.0-alpha.46",
+    "markdown-it-vuepress-code-snippet-enhanced": "^1.0.1"
   },
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
+  },
+  "dependencies": {
+    "@vuepress/core": "^1.0.2",
+    "@vuepress/theme-default": "^1.0.2",
+    "directory-tree": "^2.2.4",
+    "global": "^4.3.2",
+    "html-server": "^0.1.1",
+    "markdown-it-emoji": "^2.0.0",
+    "vuepress": "^1.0.2"
   }
 }
