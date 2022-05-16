@@ -35,10 +35,11 @@ function sidebarChildren(subDirPath)
 }
 
 module.exports = {
+  
   title: "MITRE InSpec Assessor Course",
   description:
     "The MITRE InSpec Team's Assessor course for InSpec Profiles",
-
+  base: process.env.NODE_ENV === 'production'? '/inspec-accessor/': '/',
   themeConfig: {
     repo: 'mitre/inspec-ssessor',
     // Customising the header label
