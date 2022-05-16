@@ -28,7 +28,7 @@ function sidebarChildren(subDirPath) {
 }
 
 module.exports = {
-  base: process.env.NODE_ENV === "production" ? "/inspec-accessor/" : "/",
+  base: process.env.NODE_ENV === "production" ? "/inspec-assessor/" : "/",
   title: "MITRE InSpec Assessor Course",
   description: "The MITRE InSpec Team's Assessor course for InSpec Profiles",
   themeConfig: {
