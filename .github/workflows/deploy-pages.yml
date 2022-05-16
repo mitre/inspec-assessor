@@ -29,8 +29,8 @@ jobs:
     - name: Build and Deploy
       uses: jenkey2011/vuepress-deploy@master
       env:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        TARGET_REPO: jenkey2011/vuepress-deploy-demo
+        ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TARGET_REPO: mitre/inspec-assessor
         TARGET_BRANCH: gh_pages
         BUILD_SCRIPT: npm ci && npm run docs:build
         BUILD_DIR: docs/.vuepress/dist/
