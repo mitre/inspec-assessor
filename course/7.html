@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>7. Example running an InSpec profile directly from Github | MITRE InSpec Assessor Course</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="The MITRE InSpec Team&#39;s Assessor course for InSpec Profiles">
+    
+    <link rel="preload" href="/inspec-assessor/assets/css/0.styles.0213b11c.css" as="style"><link rel="preload" href="/inspec-assessor/assets/js/app.fe1f93d1.js" as="script"><link rel="preload" href="/inspec-assessor/assets/js/2.2738782e.js" as="script"><link rel="preload" href="/inspec-assessor/assets/js/23.95aa6bc2.js" as="script"><link rel="prefetch" href="/inspec-assessor/assets/js/10.546059c9.js"><link rel="prefetch" href="/inspec-assessor/assets/js/11.05c5934c.js"><link rel="prefetch" href="/inspec-assessor/assets/js/12.588a52e2.js"><link rel="prefetch" href="/inspec-assessor/assets/js/13.70c15bee.js"><link rel="prefetch" href="/inspec-assessor/assets/js/14.e328e7e1.js"><link rel="prefetch" href="/inspec-assessor/assets/js/15.40fd7af1.js"><link rel="prefetch" href="/inspec-assessor/assets/js/16.97b76089.js"><link rel="prefetch" href="/inspec-assessor/assets/js/17.52a7f01e.js"><link rel="prefetch" href="/inspec-assessor/assets/js/18.e0c2e0fd.js"><link rel="prefetch" href="/inspec-assessor/assets/js/19.d31e7af7.js"><link rel="prefetch" href="/inspec-assessor/assets/js/20.5586992e.js"><link rel="prefetch" href="/inspec-assessor/assets/js/21.5cbad01f.js"><link rel="prefetch" href="/inspec-assessor/assets/js/22.a8df269d.js"><link rel="prefetch" href="/inspec-assessor/assets/js/24.d4cc2416.js"><link rel="prefetch" href="/inspec-assessor/assets/js/25.c26e7023.js"><link rel="prefetch" href="/inspec-assessor/assets/js/26.f804be0d.js"><link rel="prefetch" href="/inspec-assessor/assets/js/27.ceea8084.js"><link rel="prefetch" href="/inspec-assessor/assets/js/28.4805dbea.js"><link rel="prefetch" href="/inspec-assessor/assets/js/3.7ab87a97.js"><link rel="prefetch" href="/inspec-assessor/assets/js/4.a0a13830.js"><link rel="prefetch" href="/inspec-assessor/assets/js/5.64a9703e.js"><link rel="prefetch" href="/inspec-assessor/assets/js/6.af8f00ad.js"><link rel="prefetch" href="/inspec-assessor/assets/js/7.b17b3b65.js"><link rel="prefetch" href="/inspec-assessor/assets/js/8.bb905c73.js"><link rel="prefetch" href="/inspec-assessor/assets/js/9.bcb1e7d7.js">
+    <link rel="stylesheet" href="/inspec-assessor/assets/css/0.styles.0213b11c.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/inspec-assessor/" class="home-link router-link-active"><!----> <span class="site-name">MITRE InSpec Assessor Course</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/inspec-assessor/course/1.html" class="nav-link">
+  Course
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Install" class="dropdown-title"><span class="title">Install</span> <span class="arrow down"></span></button> <button type="button" aria-label="Install" class="mobile-dropdown-title"><span class="title">Install</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/inspec-assessor/installation/LinuxInstall.html" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/inspec-assessor/installation/MacInstall.html" class="nav-link">
+  Mac
+</a></li><li class="dropdown-item"><!----> <a href="/inspec-assessor/installation/WindowsInstall.html" class="nav-link">
+  Windows
+</a></li></ul></div></div><div class="nav-item"><a href="/inspec-assessor/contact.html" class="nav-link">
+  Contact
+</a></div> <a href="https://github.com/mitre/inspec-assessor" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Contribute!
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/inspec-assessor/course/1.html" class="nav-link">
+  Course
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Install" class="dropdown-title"><span class="title">Install</span> <span class="arrow down"></span></button> <button type="button" aria-label="Install" class="mobile-dropdown-title"><span class="title">Install</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/inspec-assessor/installation/LinuxInstall.html" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/inspec-assessor/installation/MacInstall.html" class="nav-link">
+  Mac
+</a></li><li class="dropdown-item"><!----> <a href="/inspec-assessor/installation/WindowsInstall.html" class="nav-link">
+  Windows
+</a></li></ul></div></div><div class="nav-item"><a href="/inspec-assessor/contact.html" class="nav-link">
+  Contact
+</a></div> <a href="https://github.com/mitre/inspec-assessor" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Contribute!
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/inspec-assessor/course/1.html" class="sidebar-link">1. About InSpec</a></li><li><a href="/inspec-assessor/course/2.html" class="sidebar-link">2. Course overview</a></li><li><a href="/inspec-assessor/course/3.html" class="sidebar-link">3. Command line overview</a></li><li><a href="/inspec-assessor/course/4.html" class="sidebar-link">4. Identify your stack of components for the system you are assessing (i.e., Cloud Services, Virtualization Platforms, Operating Systems, Databases, Application Logic, and Web Servers)</a></li><li><a href="/inspec-assessor/course/5.html" class="sidebar-link">5. Review the READMEs for each profile for specific run instructions</a></li><li><a href="/inspec-assessor/course/6.html" class="sidebar-link">6. Understanding many ways of installing/staging InSpec, depending on your assessment restrictions</a></li><li><a href="/inspec-assessor/course/7.html" aria-current="page" class="active sidebar-link">7. Example running an InSpec profile directly from Github</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/inspec-assessor/course/7.html#_7-example-running-an-inspec-profile-directly-from-github" class="sidebar-link">7. Example running an InSpec profile directly from Github</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/inspec-assessor/course/7.html#_7-1-running-baseline-straight-from-github" class="sidebar-link">7.1. Running baseline straight from Github</a></li><li class="sidebar-sub-header"><a href="/inspec-assessor/course/7.html#_7-2-viewing-and-analyzing-results" class="sidebar-link">7.2. Viewing and Analyzing Results</a></li></ul></li></ul></li><li><a href="/inspec-assessor/course/8.html" class="sidebar-link">8. Using an --input-file to tailor specifics</a></li><li><a href="/inspec-assessor/course/9.html" class="sidebar-link">9. MITRE Heimdall Tools</a></li><li><a href="/inspec-assessor/course/10.html" class="sidebar-link">10. Advanced - running InSpec against</a></li><li><a href="/inspec-assessor/course/11.html" class="sidebar-link">11. Understand a control's structure</a></li><li><a href="/inspec-assessor/course/12.html" class="sidebar-link">Profile Inheritance and Overlays</a></li><li><a href="/inspec-assessor/course/13.html" class="sidebar-link">13. Example running an InSpec profile using a local archive (for air-gapped target systems)</a></li><li><a href="/inspec-assessor/course/14.html" class="sidebar-link">14. Additional Resources</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="_7-example-running-an-inspec-profile-directly-from-github"><a href="#_7-example-running-an-inspec-profile-directly-from-github" class="header-anchor">#</a> 7. Example running an InSpec profile directly from Github</h2> <h3 id="_7-1-running-baseline-straight-from-github"><a href="#_7-1-running-baseline-straight-from-github" class="header-anchor">#</a> 7.1. Running baseline straight from Github</h3> <p>In this module, we use NGINX for learning purposes. If you're interested in NGINX specifically, you may be interested in the <a href="https://github.com/mitre/nginx-baseline" target="_blank" rel="noopener noreferrer">MITRE nginx-baseline<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> profile on GitHub. Alternatively, you may also check out the <a href="https://supermarket.chef.io/tools/nginx-baseline" target="_blank" rel="noopener noreferrer">DevSec Nginx Baseline<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> profile on Chef Supermarket.</p> <p>To execute the GitHub profile on your target system, run this <code>inspec exec</code> command.</p> <p><code>$ inspec exec https://github.com/dev-sec/nginx-baseline -t docker://nginx</code></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>$ inspec exec https://github.com/dev-sec/nginx-baseline -t docker://nginx
+[2022-07-15T03:46:59+00:00] WARN: URL target https://github.com/dev-sec/nginx-baseline transformed to https://github.com/dev-sec/nginx-baseline/archive/master.tar.gz. Consider using the git fetcher
+
+Profile:   DevSec Nginx Baseline (nginx-baseline)
+Version:   2.5.1
+Target:    docker://bd4414b39839a25fb745eafed218ae12e9ed4929bb6fa356d78c55f8bccb0e3c
+Target ID: 07276d06-8bdd-50be-bc49-87db8c2fe619
+
+  ×  nginx-01: Running worker process as non-privileged user (1 failed)
+     ✔  User www-data is expected to exist
+     ×  Parse Config File /etc/nginx/nginx.conf user is expected to eq &quot;www-data&quot;
+     
+     expected: &quot;www-data&quot;
+          got: &quot;nginx&quot;
+     
+     (compared using ==)
+
+     ✔  Parse Config File /etc/nginx/nginx.conf group is expected not to eq &quot;root&quot;
+  ×  nginx-02: Check NGINX config file owner, group and permissions. (1 failed)
+     ✔  File /etc/nginx/nginx.conf is expected to be owned by &quot;root&quot;
+     ✔  File /etc/nginx/nginx.conf is expected to be grouped into &quot;root&quot;
+     ×  File /etc/nginx/nginx.conf is expected not to be readable by others
+     expected File /etc/nginx/nginx.conf not to be readable by others
+     ✔  File /etc/nginx/nginx.conf is expected not to be writable by others
+     ✔  File /etc/nginx/nginx.conf is expected not to be executable by others
+  ×  nginx-03: Nginx default files (1 failed)
+     ×  File /etc/nginx/conf.d/default.conf is expected not to be file
+     expected `File /etc/nginx/conf.d/default.conf.file?` to be falsey, got true
+     ✔  File /etc/nginx/sites-enabled/default is expected not to be file
+  ×  nginx-04: Check for multiple instances
+     ×  Command: `ps aux | egrep &quot;nginx: master&quot; | egrep -v &quot;grep&quot; | wc -l` stdout is expected to match /^1$/
+     expected &quot;0\n&quot; to match /^1$/
+     Diff:
+     @@ -1,2 +1,2 @@
+     -/^1$/
+     +0
+
+  ×  nginx-05: Disable server_tokens directive
+     ×  Parse Config  server_tokens is expected to eq &quot;off&quot;
+     
+     expected: &quot;off&quot;
+          got: nil
+     
+     (compared using ==)
+
+  ×  nginx-06: Prevent buffer overflow attacks (4 failed)
+     ×  Parse Config  client_body_buffer_size is expected to eq &quot;1k&quot;
+     
+     expected: &quot;1k&quot;
+          got: nil
+     
+     (compared using ==)
+
+     ×  Parse Config  client_max_body_size is expected to eq &quot;1k&quot;
+     
+     expected: &quot;1k&quot;
+          got: nil
+     
+     (compared using ==)
+
+     ×  Parse Config  client_header_buffer_size is expected to eq &quot;1k&quot;
+     
+     expected: &quot;1k&quot;
+          got: nil
+     
+     (compared using ==)
+
+     ×  Parse Config  large_client_header_buffers is expected to eq &quot;2 1k&quot;
+     
+     expected: &quot;2 1k&quot;
+          got: nil
+     
+     (compared using ==)
+
+  ×  nginx-07: Control simultaneous connections (2 failed)
+     ×  Parse Config  limit_conn_zone is expected to eq &quot;$binary_remote_addr zone=default:10m&quot;
+     
+     expected: &quot;$binary_remote_addr zone=default:10m&quot;
+          got: nil
+     
+     (compared using ==)
+
+     ×  Parse Config  limit_conn is expected to eq &quot;default 5&quot;
+     
+     expected: &quot;default 5&quot;
+          got: nil
+     
+     (compared using ==)
+
+  ×  nginx-08: Prevent clickjacking
+     ×  Parse Config  add_header is expected to include &quot;X-Frame-Options SAMEORIGIN&quot;
+     expected nil to include &quot;X-Frame-Options SAMEORIGIN&quot;, but it does not respond to `include?`
+  ×  nginx-09: Enable Cross-site scripting filter
+     ×  Parse Config  add_header is expected to include &quot;X-XSS-Protection \&quot;1; mode=block\&quot;&quot;
+     expected nil to include &quot;X-XSS-Protection \&quot;1; mode=block\&quot;&quot;, but it does not respond to `include?`
+  ×  nginx-10: Disable content-type sniffing
+     ×  Parse Config  add_header is expected to include &quot;X-Content-Type-Options nosniff&quot;
+     expected nil to include &quot;X-Content-Type-Options nosniff&quot;, but it does not respond to `include?`
+  ×  nginx-12: TLS Protocols (5 failed)
+     ×  Parse Config  ssl_protocols is expected to be in &quot;TLSv1.3&quot;, &quot;TLSv1.2&quot;, &quot;TLSv1.2 TLSv1.3&quot;, and &quot;TLSv1.3 TLSv1.2&quot;
+     expected `` to be in the list: `[&quot;TLSv1.3&quot;, &quot;TLSv1.2&quot;, &quot;TLSv1.2 TLSv1.3&quot;, &quot;TLSv1.3 TLSv1.2&quot;]`
+     ×  Parse Config  ssl_session_tickets is expected to eq &quot;off&quot;
+     
+     expected: &quot;off&quot;
+          got: nil
+     
+     (compared using ==)
+
+     ×  Parse Config  ssl_ciphers is expected to eq &quot;'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-C...CDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256'&quot;
+     
+     expected: &quot;'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-C...CDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256'&quot;
+          got: nil
+     
+     (compared using ==)
+
+     ×  Parse Config  ssl_prefer_server_ciphers is expected to eq &quot;on&quot;
+     
+     expected: &quot;on&quot;
+          got: nil
+     
+     (compared using ==)
+
+     ×  Parse Config  ssl_dhparam is expected to eq &quot;/etc/nginx/dh4096.pem&quot;
+     
+     expected: &quot;/etc/nginx/dh4096.pem&quot;
+          got: nil
+     
+     (compared using ==)
+
+  ×  nginx-13: Add HSTS Header
+     ×  Parse Config  add_header is expected to include &quot;Strict-Transport-Security max-age=15768000&quot;
+     expected nil to include &quot;Strict-Transport-Security max-age=15768000&quot;, but it does not respond to `include?`
+  ↺  nginx-14: Disable insecure HTTP-methods
+     ↺  Skipped control due to only_if condition.
+  ×  nginx-15: Content-Security-Policy
+     ×  Parse Config  add_header is expected to include &quot;Content-Security-Policy \&quot;script-src 'self'; object-src 'self'\&quot;&quot;
+     expected nil to include &quot;Content-Security-Policy \&quot;script-src 'self'; object-src 'self'\&quot;&quot;, but it does not respond to `include?`
+  ↺  nginx-16: Set cookie with HttpOnly and Secure flag
+     ↺  Skipped control due to only_if condition.
+  ×  nginx-17: Control timeouts to improve performance (4 failed)
+     ×  Parse Config  keepalive_timeout is expected to eq &quot;5 5&quot;
+     
+     expected: &quot;5 5&quot;
+          got: &quot;65&quot;
+     
+     (compared using ==)
+
+     ×  Parse Config  client_body_timeout is expected to eq &quot;10&quot;
+     
+     expected: &quot;10&quot;
+          got: nil
+     
+     (compared using ==)
+
+     ×  Parse Config  client_header_timeout is expected to eq &quot;10&quot;
+     
+     expected: &quot;10&quot;
+          got: nil
+     
+     (compared using ==)
+
+     ×  Parse Config  send_timeout is expected to eq &quot;10&quot;
+     
+     expected: &quot;10&quot;
+          got: nil
+     
+     (compared using ==)
+
+
+
+Profile Summary: 0 successful controls, 14 control failures, 2 controls skipped
+Test Summary: 7 successful, 25 failures, 2 skipped
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br><span class="line-number">156</span><br><span class="line-number">157</span><br><span class="line-number">158</span><br><span class="line-number">159</span><br><span class="line-number">160</span><br><span class="line-number">161</span><br><span class="line-number">162</span><br><span class="line-number">163</span><br><span class="line-number">164</span><br><span class="line-number">165</span><br><span class="line-number">166</span><br><span class="line-number">167</span><br><span class="line-number">168</span><br><span class="line-number">169</span><br><span class="line-number">170</span><br><span class="line-number">171</span><br><span class="line-number">172</span><br></div></div><p>You see that many of the tests pass, while others fail and may require investigation.</p> <p>You may want to extend the <code>nginx-baseline</code> with your own custom requirements. To do that, you might use what's called a <em>wrapper profile</em>. You can check out <a href="https://learn.chef.io/modules/create-a-custom-profile#/" target="_blank" rel="noopener noreferrer">Create a custom InSpec profile<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> for a more complete example.</p> <h3 id="_7-2-viewing-and-analyzing-results"><a href="#_7-2-viewing-and-analyzing-results" class="header-anchor">#</a> 7.2. Viewing and Analyzing Results</h3> <p>InSpec allows you to output your test results to one or more reporters. You can configure the reporter(s) using either the --json-config option or the --reporter option. While you can configure multiple reporters to write to different files, only one reporter can output to the screen(stdout).</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>$ inspec exec /root/my_nginx -t ssh://TARGET_USERNAME:TARGET_PASSWORD@TARGET_IP --reporter cli json:baseline_output.json
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h4 id="_7-2-1-syntax"><a href="#_7-2-1-syntax" class="header-anchor">#</a> 7.2.1. Syntax</h4> <p>You can specify one or more reporters using the --reporter cli flag. You can also specify a output by appending a path separated by a colon.</p> <p>Output json to screen.</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>inspec exec /root/my_nginx --reporter json
+or
+inspec exec /root/my_nginx --reporter json:-
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>Output yaml to screen</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>inspec exec /root/my_nginx --reporter yaml
+or
+inspec exec /root/my_nginx --reporter yaml:-
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>Output cli to screen and write json to a file.</p> <p><code>inspec exec /root/my_nginx --reporter cli json:/tmp/output.json</code></p> <p>Output nothing to screen and write junit and html to a file.</p> <p><code>inspec exec /root/my_nginx --reporter junit:/tmp/junit.xml html:www/index.html</code></p> <p>Output json to screen and write to a file. Write junit to a file.</p> <p><code>inspec exec /root/my_nginx --reporter json junit:/tmp/junit.xml | tee out.json</code></p> <h4 id="_7-2-2-supported-reporters"><a href="#_7-2-2-supported-reporters" class="header-anchor">#</a> 7.2.2. Supported Reporters</h4> <p>The following are the current supported reporters:</p> <ul><li>cli</li> <li>json</li> <li>json-min</li> <li>yaml</li> <li>documentation</li> <li>junit</li> <li>progress</li> <li>progress-bar</li> <li>json-rspec</li> <li>html</li></ul> <p>You can read more about <a href="https://www.inspec.io/docs/reference/reporters/" target="_blank" rel="noopener noreferrer">InSpec Reporters<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> on the documentation page.</p> <h4 id="_7-2-3-putting-it-all-together"><a href="#_7-2-3-putting-it-all-together" class="header-anchor">#</a> 7.2.3. Putting it all together</h4> <p>The following command will run the nginx baseline profile from github and use the reporter to output a json, you will need this for the next step loading it into heimdall:</p> <p><code>$ inspec exec https://github.com/mitre/nginx-baseline -t docker://nginx --reporter progress-bar json:baseline_output.json</code></p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/mitre/inspec-assessor/edit/main/docs/course/7.md" target="_blank" rel="noopener noreferrer">Help us improve this page!</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/inspec-assessor/course/6.html" class="prev">
+        6. Understanding many ways of installing/staging InSpec, depending on your assessment restrictions
+      </a></span> <span class="next"><a href="/inspec-assessor/course/8.html">
+        8. Using an --input-file to tailor specifics
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/inspec-assessor/assets/js/app.fe1f93d1.js" defer></script><script src="/inspec-assessor/assets/js/2.2738782e.js" defer></script><script src="/inspec-assessor/assets/js/23.95aa6bc2.js" defer></script>
+  </body>
+</html>
