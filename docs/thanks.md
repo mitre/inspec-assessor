@@ -2,6 +2,4 @@
 
 ### Acknowledgements
 
-- John Fitzpatrick, Thomas Petchel, Franklin Webber and InSpec.io for creating the original tutorial for Explore InSpec resources.
-
-- Aaron Lippold and Eugene Aronne for assisting me in maturing this InSpec training course.
+- Aaron Lippold and Eugene Aronne and Dr. Christina L. Phibbs for assisting me in maturing this InSpec training course.
